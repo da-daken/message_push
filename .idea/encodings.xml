@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/messagePush-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-cron/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-cron/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-handler/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-handler/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-service-api-impl/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-service-api-impl/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-service-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-service-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagePush-web/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
