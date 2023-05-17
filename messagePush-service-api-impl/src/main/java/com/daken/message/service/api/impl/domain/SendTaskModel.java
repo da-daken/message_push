@@ -27,7 +27,7 @@ public class SendTaskModel implements ProcessModel {
     private Long messageTemplateId;
 
     /**
-     * 请求参数
+     * 请求参数(用做list用于单个和多个消息同时使用)
      */
     private List<MessageParam> messageParamList;
 

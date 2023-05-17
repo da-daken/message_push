@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daken.message.support.mapper.MessageTemplateMapper">
+
+    <resultMap id="BaseResultMap" type="com.daken.message.support.domain.MessageTemplate">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="auditStatus" column="audit_status" jdbcType="TINYINT"/>
+            <result property="flowId" column="flow_id" jdbcType="VARCHAR"/>
+            <result property="msgStatus" column="msg_status" jdbcType="TINYINT"/>
+            <result property="cronTaskId" column="cron_task_id" jdbcType="BIGINT"/>
+            <result property="cronCrowdPath" column="cron_crowd_path" jdbcType="VARCHAR"/>
+            <result property="expectPushTime" column="expect_push_time" jdbcType="VARCHAR"/>
+            <result property="idType" column="id_type" jdbcType="TINYINT"/>
+            <result property="sendChannel" column="send_channel" jdbcType="INTEGER"/>
+            <result property="templateType" column="template_type" jdbcType="TINYINT"/>
+            <result property="msgType" column="msg_type" jdbcType="TINYINT"/>
+            <result property="shieldType" column="shield_type" jdbcType="TINYINT"/>
+            <result property="msgContent" column="msg_content" jdbcType="VARCHAR"/>
+            <result property="sendAccount" column="send_account" jdbcType="INTEGER"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="updator" column="updator" jdbcType="VARCHAR"/>
+            <result property="auditor" column="auditor" jdbcType="VARCHAR"/>
+            <result property="team" column="team" jdbcType="VARCHAR"/>
+            <result property="proposer" column="proposer" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+            <result property="created" column="created" jdbcType="INTEGER"/>
+            <result property="updated" column="updated" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,audit_status,
+        flow_id,msg_status,cron_task_id,
+        cron_crowd_path,expect_push_time,id_type,
+        send_channel,template_type,msg_type,
+        shield_type,msg_content,send_account,
+        creator,updator,auditor,
+        team,proposer,is_deleted,
+        created,updated
+    </sql>
+</mapper>

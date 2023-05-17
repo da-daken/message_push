@@ -1,6 +1,6 @@
 drop database if exists message_push;
 
-create database message_pushn;
+create database message_push;
 
 use message_push;
 

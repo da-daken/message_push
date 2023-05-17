@@ -41,16 +41,17 @@ public class PreParamCheckAction implements BusinessProcess {
                 .collect(Collectors.toList());
         if(CollUtil.isEmpty(resultMessageParamList)){
             context.setNeedBreak(true).setResponse(BasicResultVO.fail(RespStatusEnum.CLIENT_BAD_PARAMETERS));
-            log.error("接收者为空");
+            log.info("接收者为空");
             return ;
         }
         // 3. 不能超过100个 receiver
         if(resultMessageParamList.stream().anyMatch(messageParam -> messageParam.getReceiver().split(StrUtil.COMMA).length > OnlyConstant.BATCH_RECEIVER_SIZE)){
             context.setNeedBreak(true).setResponse(BasicResultVO.fail(RespStatusEnum.TOO_MANY_RECEIVER));
-            log.error("请求的接收者大于100个");
+            log.info("请求的接收者大于100个");
             return ;
         }
 
         sendTaskModel.setMessageParamList(resultMessageParamList);
+        context.setProcessModel(sendTaskModel);
     }
 }
