@@ -9,7 +9,6 @@ import com.daken.message.service.api.domain.MessageParam;
 import com.daken.message.service.api.impl.domain.SendTaskModel;
 import com.daken.message.support.pipeline.BusinessProcess;
 import com.daken.message.support.pipeline.ProcessContext;
-import com.daken.message.support.pipeline.ProcessModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * 前置参数检查
+ * @author daken
+ *
+ * 前置参数检查(检查模版ID和接收者是否ok)
  */
 @Slf4j
 @Service

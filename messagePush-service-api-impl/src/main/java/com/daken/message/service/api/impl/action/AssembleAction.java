@@ -29,6 +29,8 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 /**
+ * @author daken
+ *
  * 组装参数
  */
 @Slf4j
@@ -67,6 +69,7 @@ public class AssembleAction implements BusinessProcess {
 
     /**
      * 组装参数 TaskInfo
+     *
      * @param sendTaskModel
      * @param messageTemplate
      * @return
