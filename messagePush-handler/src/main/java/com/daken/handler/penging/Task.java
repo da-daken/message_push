@@ -1,7 +1,9 @@
 package com.daken.handler.penging;
 
+import com.daken.handler.shield.ShieldService;
 import com.daken.message.common.domain.TaskInfo;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,8 +21,14 @@ public class Task implements Runnable{
 
     private TaskInfo taskInfo;
 
+    @Autowired
+    private ShieldService shieldService;
     @Override
     public void run() {
+        // 1. 屏蔽消息
+        shieldService.shield(taskInfo);
+        // 2. 消息去重
 
+        // 3. 真正发送消息
     }
 }
