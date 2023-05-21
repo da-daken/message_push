@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -107,6 +108,16 @@ public class RedisUtils {
             log.error("RedisUtils#pipelineSetEx fail! e:{}", Throwables.getStackTraceAsString(e));
         }
     }
+
+    /**
+     * 获取 key 的过期时间
+     * @param key
+     * @return
+     */
+    public Long getExpireTime(String key){
+        return redisTemplate.getExpire(key, TimeUnit.SECONDS);
+    }
+
 
     /**
      * lLen 方法

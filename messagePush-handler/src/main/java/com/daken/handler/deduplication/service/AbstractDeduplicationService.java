@@ -19,10 +19,12 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
     protected Integer deduplicationType;
     @Autowired
     private DeduplicationHolder holder;
+
     @PostConstruct
     public void init(){
         holder.putService(deduplicationType, this);
     }
+
     /**
      * 构建去重key
      * @param taskInfo
