@@ -1,5 +1,7 @@
 package com.daken.handler.penging;
 
+import cn.hutool.core.collection.CollUtil;
+import com.daken.handler.deduplication.DeduplicationRuleService;
 import com.daken.handler.shield.ShieldService;
 import com.daken.message.common.domain.TaskInfo;
 import lombok.Data;
@@ -23,12 +25,19 @@ public class Task implements Runnable{
 
     @Autowired
     private ShieldService shieldService;
+    @Autowired
+    private DeduplicationRuleService deduplicationRuleService;
     @Override
     public void run() {
         // 1. 屏蔽消息
         shieldService.shield(taskInfo);
         // 2. 消息去重
+        if(CollUtil.isNotEmpty(taskInfo.getReceiver())){
+            deduplicationRuleService.deduplication(taskInfo);
+        }
+        // todo 3. 真正发送消息
+        if(CollUtil.isNotEmpty(taskInfo.getReceiver())){
 
-        // 3. 真正发送消息
+        }
     }
 }
