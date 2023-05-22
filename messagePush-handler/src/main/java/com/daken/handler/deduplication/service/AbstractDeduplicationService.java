@@ -45,7 +45,6 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
     public void deduplication(DeduplicationParam param) {
         TaskInfo taskInfo = param.getTaskInfo();
         // 1. 构建去重key
-
         // 2. 利用去重key进行过滤
         Set<String> filterReceiver = limitFilter(taskInfo, param);
         // 3. 剔除符合条件的用户
