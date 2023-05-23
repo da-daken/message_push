@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="messagePush-service-api" />
+        <module name="messagePush-web" />
+        <module name="messagePush-support" />
+        <module name="messagePush-service-api-impl" />
+        <module name="messagePush-handler" />
+        <module name="messagePush-cron" />
+        <module name="messagePush-common" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="messagePush-common" options="-parameters" />
+      <module name="messagePush-cron" options="-parameters" />
+      <module name="messagePush-handler" options="-parameters" />
+      <module name="messagePush-service-api" options="-parameters" />
+      <module name="messagePush-service-api-impl" options="-parameters" />
+      <module name="messagePush-support" options="-parameters" />
+      <module name="messagePush-web" options="-parameters" />
+    </option>
+  </component>
+</project>
