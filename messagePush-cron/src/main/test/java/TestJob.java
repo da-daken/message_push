@@ -1,5 +1,4 @@
 import com.xxl.job.core.handler.annotation.XxlJob;
-import org.junit.Test;
 import org.springframework.stereotype.Component;
 
 @Component
