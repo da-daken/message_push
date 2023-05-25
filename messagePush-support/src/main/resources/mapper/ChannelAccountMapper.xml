@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.daken.message.support.mapper.ChannelAccountMapper">
+
+    <resultMap id="BaseResultMap" type="com.daken.message.support.domain.ChannelAccount">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="sendChannel" column="send_channel" jdbcType="TINYINT"/>
+            <result property="accountConfig" column="account_config" jdbcType="VARCHAR"/>
+            <result property="creator" column="creator" jdbcType="VARCHAR"/>
+            <result property="created" column="created" jdbcType="INTEGER"/>
+            <result property="updated" column="updated" jdbcType="INTEGER"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,name,send_channel,
+        account_config,creator,created,
+        updated,is_deleted
+    </sql>
+</mapper>

@@ -2,6 +2,7 @@ package com.daken.handler.penging;
 
 import cn.hutool.core.collection.CollUtil;
 import com.daken.handler.deduplication.DeduplicationRuleService;
+import com.daken.handler.handler.BaseHandler;
 import com.daken.handler.shield.ShieldService;
 import com.daken.message.common.domain.TaskInfo;
 import lombok.Data;
@@ -27,6 +28,8 @@ public class Task implements Runnable{
     private ShieldService shieldService;
     @Autowired
     private DeduplicationRuleService deduplicationRuleService;
+    @Autowired
+    private BaseHandler handler;
     @Override
     public void run() {
         // 1. 屏蔽消息

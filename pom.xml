@@ -102,6 +102,20 @@
                 <version>1.6.2</version>
             </dependency>
 
+            <!-- 阿里云发送短信SDK -->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>alibabacloud-dysmsapi20170525</artifactId>
+                <version>2.0.23</version>
+            </dependency>
+
+            <!-- 腾讯云发送短信SDK -->
+            <dependency>
+                <groupId>com.tencentcloudapi</groupId>
+                <artifactId>tencentcloud-sdk-java</artifactId>
+                <version>3.1.510</version>
+            </dependency>
+
             <!--xxl-job分布式定时任务-->
             <dependency>
                 <groupId>com.xuxueli</groupId>
