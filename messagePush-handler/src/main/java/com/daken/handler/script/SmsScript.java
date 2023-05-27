@@ -9,7 +9,7 @@ public interface SmsScript {
     /**
      * 发送短信
      * @param smsParam
-     * @return 返回记录，保存在数据库
+     * @return 返回记录，保存在数据库，为了统计
      */
     List<SmsRecord> send(SmsParam smsParam);
 

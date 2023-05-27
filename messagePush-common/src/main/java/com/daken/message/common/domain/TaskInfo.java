@@ -69,7 +69,7 @@ public class TaskInfo {
     private ContentModel contentModel;
 
     /**
-     * 发送账号（邮件下可有多个发送账号、短信可有多个发送账号..）
+     * 发送账号（邮件下可有多个发送账号、短信可有多个发送账号.., 没有绑定账号默认是0，走负载均衡）
      */
     private Integer sendAccount;
 
