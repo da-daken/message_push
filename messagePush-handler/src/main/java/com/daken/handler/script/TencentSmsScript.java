@@ -4,13 +4,10 @@ import cn.hutool.core.date.DatePattern;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.IdUtil;
-import com.alibaba.fastjson.JSON;
 import com.daken.handler.param.sms.SmsParam;
 import com.daken.message.common.dto.account.TencentSmsAccount;
 import com.daken.message.common.enums.SmsStatus;
-import com.daken.message.support.domain.ChannelAccount;
 import com.daken.message.support.domain.SmsRecord;
-import com.daken.message.support.service.ChannelAccountService;
 import com.daken.message.support.utils.AccountUtils;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
@@ -50,10 +47,7 @@ public class TencentSmsScript implements SmsScript{
         }
     }
 
-    @Override
-    public List<SmsRecord> pull(Integer id) {
-        return null;
-    }
+
 
     /**
      * 初始化

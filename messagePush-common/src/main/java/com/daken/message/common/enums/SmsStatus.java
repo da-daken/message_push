@@ -18,13 +18,9 @@ public enum SmsStatus implements PowerfulEnum {
      */
     SEND_SUCCESS(10, "调用渠道接口发送成功"),
     /**
-     * 用户收到短信(收到渠道短信回执，状态成功)
+     * 正在等待回执
      */
-    RECEIVE_SUCCESS(20, "用户收到短信(收到渠道短信回执，状态成功)"),
-    /**
-     * 用户收不到短信(收到渠道短信回执，状态失败)
-     */
-    RECEIVE_FAIL(30, "用户收不到短信(收到渠道短信回执，状态失败)"),
+    RECEIVE_SUCCESS(20, "正在等待回执"),
     /**
      * 调用渠道接口发送失败
      */

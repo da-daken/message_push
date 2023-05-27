@@ -6,6 +6,7 @@ package com.daken.message.common.constant;
  */
 public class CommonConstant {
 
+    public final static String OK = "OK";
     public final static String PERIOD = ".";
     public final static String COMMA = ",";
     public final static String COLON = ":";
@@ -22,6 +23,9 @@ public class CommonConstant {
 
 
     public final static String ONE = "1";
+    public final static Long ONE_ = 1L;
+    public final static Long TWO = 2L;
+    public final static Long THREE = 3L;
     public final static String ZERO = "0";
     public final static String MINUS_ONE = "-1";
     public final static String YES = "Y";

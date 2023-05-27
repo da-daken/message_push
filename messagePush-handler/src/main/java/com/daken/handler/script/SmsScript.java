@@ -13,10 +13,4 @@ public interface SmsScript {
      */
     List<SmsRecord> send(SmsParam smsParam);
 
-    /**
-     * 拉取回执
-     * @param id
-     * @return
-     */
-    List<SmsRecord> pull(Integer id);
 }
