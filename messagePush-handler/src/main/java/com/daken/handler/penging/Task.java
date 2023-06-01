@@ -3,6 +3,7 @@ package com.daken.handler.penging;
 import cn.hutool.core.collection.CollUtil;
 import com.daken.handler.deduplication.DeduplicationRuleService;
 import com.daken.handler.handler.BaseHandler;
+import com.daken.handler.handler.HandlerHolder;
 import com.daken.handler.shield.ShieldService;
 import com.daken.message.common.domain.TaskInfo;
 import lombok.Data;
@@ -29,7 +30,7 @@ public class Task implements Runnable{
     @Autowired
     private DeduplicationRuleService deduplicationRuleService;
     @Autowired
-    private BaseHandler handler;
+    private HandlerHolder holder;
     @Override
     public void run() {
         // 1. 屏蔽消息
@@ -38,9 +39,9 @@ public class Task implements Runnable{
         if(CollUtil.isNotEmpty(taskInfo.getReceiver())){
             deduplicationRuleService.deduplication(taskInfo);
         }
-        // todo 3. 真正发送消息
+        // 3. 真正发送消息
         if(CollUtil.isNotEmpty(taskInfo.getReceiver())){
-
+            holder.getHandler(taskInfo.getSendChannel()).doHandler(taskInfo);
         }
     }
 }

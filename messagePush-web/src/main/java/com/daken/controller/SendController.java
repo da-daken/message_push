@@ -1,4 +1,4 @@
-package com.daken;
+package com.daken.controller;
 
 import com.daken.message.common.vo.BasicResultVO;
 import com.daken.message.service.api.domain.SendRequest;
