@@ -6,6 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
 import com.daken.handler.flowcontrol.FlowControlParam;
+import com.daken.handler.flowcontrol.enums.RateLimitStrategy;
 import com.daken.handler.handler.BaseHandler;
 import com.daken.message.common.domain.TaskInfo;
 import com.daken.message.common.dto.model.EmailContentModel;
@@ -30,9 +31,11 @@ import java.util.Objects;
 public class EmailHandler extends BaseHandler {
     public EmailHandler(){
         channelCode = ChannelType.EMAIL.getCode();
-        RateLimiter rateLimiter = RateLimiter.create(10);
-        flowControlParam.setRateLimiter(rateLimiter);
-        flowControlParam.setRateInitValue(Double.valueOf(1));
+        // 按照请求限流，默认单机 3 qps （具体数值配置在apollo动态调整)
+        Double rateInitValue = Double.valueOf(3);
+        flowControlParam = FlowControlParam.builder().rateInitValue(rateInitValue)
+                .strategy(RateLimitStrategy.REQUEST_RATE_LIMIT)
+                .rateLimiter(RateLimiter.create(rateInitValue)).build();
     }
 
     @Value("${daken.mail.upload.path}")

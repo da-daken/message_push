@@ -4,6 +4,7 @@ package com.daken.handler.handler.impl;
 import cn.hutool.core.collection.CollUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.daken.handler.flowcontrol.enums.RateLimitStrategy;
 import com.daken.handler.handler.BaseHandler;
 import com.daken.handler.param.sms.MessageTypeSmsConfig;
 import com.daken.handler.param.sms.SmsParam;
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import com.daken.handler.flowcontrol.FlowControlParam;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -35,9 +37,12 @@ import java.util.Random;
 public class SmsHandler extends BaseHandler {
     public SmsHandler(){
         channelCode = ChannelType.SMS.getCode();
-        RateLimiter rateLimiter = RateLimiter.create(10);
-        flowControlParam.setRateLimiter(rateLimiter);
-        flowControlParam.setRateInitValue(Double.valueOf(1));
+        // 按照请求限流，默认单机 3 qps （具体数值配置在apollo动态调整)
+        Double rateInitValue = Double.valueOf(3);
+        flowControlParam = FlowControlParam.builder().rateInitValue(rateInitValue)
+                .strategy(RateLimitStrategy.REQUEST_RATE_LIMIT)
+                .rateLimiter(RateLimiter.create(rateInitValue)).build();
+
     }
 
     public static final Integer AUTO_FLOW_RULE = 0;
