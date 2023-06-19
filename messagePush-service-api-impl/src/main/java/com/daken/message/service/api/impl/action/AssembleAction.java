@@ -107,7 +107,7 @@ public class AssembleAction implements BusinessProcess {
         Map<String, String> variables = messageParam.getVariables();
         JSONObject jsonObject = JSON.parseObject(messageTemplate.getMsgContent());
 
-
+        // todo 有疑问，为什么转成json
         // 通过反射 组装出 contentModel
         Field[] fields = ReflectUtil.getFields(contentModelClass);
         ContentModel contentModel = ReflectUtil.newInstance(contentModelClass);

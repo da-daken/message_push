@@ -129,6 +129,13 @@
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
                 <version>2.2.2</version>
             </dependency>
+
+            <!--动态线程池引入-->
+            <dependency>
+                <groupId>io.github.lyh200</groupId>
+                <artifactId>dynamic-tp-spring-boot-starter-apollo</artifactId>
+                <version>1.0.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

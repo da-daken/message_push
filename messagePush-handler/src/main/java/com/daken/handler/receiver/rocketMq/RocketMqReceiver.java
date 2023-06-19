@@ -1,11 +1,18 @@
 package com.daken.handler.receiver.rocketMq;
 
+import com.alibaba.fastjson.JSON;
+import com.daken.handler.receiver.ConsumeService;
+import com.daken.message.common.domain.TaskInfo;
 import com.daken.message.support.constant.MessageQueuePipeline;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.annotation.SelectorType;
 import org.apache.rocketmq.spring.core.RocketMQListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author daken
@@ -21,8 +28,15 @@ import org.springframework.stereotype.Component;
 )
 public class RocketMqReceiver implements RocketMQListener<String> {
 
-    @Override
-    public void onMessage(String s) {
+    @Autowired
+    private ConsumeService consumeService;
 
+    @Override
+    public void onMessage(String message) {
+        if(StringUtils.isBlank(message)){
+            return ;
+        }
+        List<TaskInfo> taskInfoList = JSON.parseArray(message, TaskInfo.class);
+        consumeService.consume2Send(taskInfoList);
     }
 }
