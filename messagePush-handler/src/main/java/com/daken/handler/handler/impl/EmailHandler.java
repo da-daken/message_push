@@ -5,6 +5,7 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.mail.MailAccount;
 import cn.hutool.extra.mail.MailUtil;
+import com.daken.handler.flowcontrol.FlowControlParam;
 import com.daken.handler.handler.BaseHandler;
 import com.daken.message.common.domain.TaskInfo;
 import com.daken.message.common.dto.model.EmailContentModel;
@@ -12,6 +13,7 @@ import com.daken.message.common.enums.ChannelType;
 import com.daken.message.support.domain.MessageTemplate;
 import com.daken.message.support.utils.AccountUtils;
 import com.google.common.base.Throwables;
+import com.google.common.util.concurrent.RateLimiter;
 import com.sun.mail.util.MailSSLSocketFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ import java.util.Objects;
 public class EmailHandler extends BaseHandler {
     public EmailHandler(){
         channelCode = ChannelType.EMAIL.getCode();
+        RateLimiter rateLimiter = RateLimiter.create(10);
+        flowControlParam.setRateLimiter(rateLimiter);
+        flowControlParam.setRateInitValue(Double.valueOf(1));
     }
 
     @Value("${daken.mail.upload.path}")

@@ -1,11 +1,14 @@
 package com.daken.handler.handler;
 
+import com.daken.handler.flowcontrol.FlowControlParam;
+import com.daken.handler.flowcontrol.FlowControlService;
 import com.daken.message.common.domain.TaskInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import java.util.Objects;
 
 /**
  * @author daken
@@ -18,6 +21,14 @@ public abstract class BaseHandler implements Handler{
      * 渠道ID
      */
     protected Integer channelCode;
+
+    /**
+     * 限流参数
+     */
+    protected FlowControlParam flowControlParam;
+
+    @Autowired
+    private FlowControlService flowControlService;
 
     @Resource
     private HandlerHolder holder;
@@ -32,7 +43,10 @@ public abstract class BaseHandler implements Handler{
      * @param taskInfo
      */
     private void flowControl(TaskInfo taskInfo){
-        // todo
+        // 子类设置了限流参数，才生效
+        if(Objects.nonNull(flowControlParam)){
+            flowControlService.flowControl(taskInfo, flowControlParam);
+        }
     }
 
     public abstract boolean handler(TaskInfo taskInfo);

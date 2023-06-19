@@ -18,6 +18,7 @@ import com.daken.message.support.domain.SmsRecord;
 import com.daken.message.support.service.ConfigService;
 import com.daken.message.support.service.SmsRecordService;
 import com.daken.message.support.utils.AccountUtils;
+import com.google.common.util.concurrent.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -34,6 +35,9 @@ import java.util.Random;
 public class SmsHandler extends BaseHandler {
     public SmsHandler(){
         channelCode = ChannelType.SMS.getCode();
+        RateLimiter rateLimiter = RateLimiter.create(10);
+        flowControlParam.setRateLimiter(rateLimiter);
+        flowControlParam.setRateInitValue(Double.valueOf(1));
     }
 
     public static final Integer AUTO_FLOW_RULE = 0;
