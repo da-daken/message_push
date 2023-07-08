@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="messagePush-stream" />
         <module name="messagePush-service-api" />
         <module name="messagePush-web" />
         <module name="messagePush-support" />
@@ -23,6 +24,7 @@
       <module name="messagePush-handler" options="-parameters" />
       <module name="messagePush-service-api" options="-parameters" />
       <module name="messagePush-service-api-impl" options="-parameters" />
+      <module name="messagePush-stream" options="-parameters" />
       <module name="messagePush-support" options="-parameters" />
       <module name="messagePush-web" options="-parameters" />
     </option>
