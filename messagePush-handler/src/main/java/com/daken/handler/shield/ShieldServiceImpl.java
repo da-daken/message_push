@@ -1,7 +1,10 @@
 package com.daken.handler.shield;
 
+import com.daken.message.common.domain.AnchorInfo;
 import com.daken.message.common.domain.TaskInfo;
+import com.daken.message.common.enums.AnchorState;
 import com.daken.message.common.enums.ShieldType;
+import com.daken.message.support.utils.LogUtils;
 import com.daken.message.support.utils.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,9 @@ public class ShieldServiceImpl implements ShieldService {
     public static final long SECONDS_OF_A_DAY = 86400L;
 
     @Autowired
+    private LogUtils logUtils;
+
+    @Autowired
     private RedisUtils redisUtils;
     @Override
     public void shield(TaskInfo taskInfo) {
@@ -28,10 +34,13 @@ public class ShieldServiceImpl implements ShieldService {
          */
         if(isNight()){
             if(ShieldType.NIGHT_SHIELD.getCode().equals(taskInfo.getShieldType())){
-
+                logUtils.print(AnchorInfo.builder().state(AnchorState.NIGHT_SHIELD.getCode())
+                        .businessId(taskInfo.getBusinessId()).ids(taskInfo.getReceiver()).build());
+                // todo
             }
             if(ShieldType.NIGHT_SHIELD_BUT_NEXT_DAY_SEND.getCode().equals(taskInfo.getShieldType())){
-
+                // todo
+                logUtils.print(AnchorInfo.builder().state(AnchorState.NIGHT_SHIELD_NEXT_SEND.getCode()).businessId(taskInfo.getBusinessId()).ids(taskInfo.getReceiver()).build());
             }
             // 需要屏蔽就把接收者设为空
             taskInfo.setReceiver(new HashSet<>());

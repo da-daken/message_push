@@ -22,6 +22,7 @@ public class DeduplicationRuleService {
 
     public void deduplication(TaskInfo taskInfo){
         // 获取配置
+        // 配置样例：{"deduplication_10":{"num":1,"time":300},"deduplication_20":{"num":5}}
         String deduplicationConfig = config.getProperty(DEDUPLICATION_RULE_KEY, CommonConstant.EMPTY_JSON_OBJECT);
         // 可能有多种去重服务
         // 所以都遍历一遍

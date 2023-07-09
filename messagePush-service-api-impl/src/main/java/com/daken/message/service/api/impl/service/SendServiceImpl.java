@@ -1,5 +1,6 @@
 package com.daken.message.service.api.impl.service;
 
+import cn.monitor4all.logRecord.annotation.OperationLog;
 import com.daken.message.common.enums.RespStatusEnum;
 import com.daken.message.common.vo.BasicResultVO;
 import com.daken.message.service.api.domain.BatchSendRequest;
@@ -21,6 +22,7 @@ public class SendServiceImpl implements SendService {
     private ProcessController processController;
 
     @Override
+    @OperationLog(bizType = "SendService#send", bizId = "#sendRequest.messageTemplateId", msg = "#sendRequest")
     public SendResponse send(SendRequest sendRequest) {
         //对 sendRequest 判空，防止后面空指针
         //因为这个接口很容易被发现，防止有人搞破坏
@@ -46,6 +48,7 @@ public class SendServiceImpl implements SendService {
     }
 
     @Override
+    @OperationLog(bizType = "SendService#batchSend", bizId = "#batchSendRequest.messageTemplateId", msg = "#batchSendRequest")
     public SendResponse batchSend(BatchSendRequest batchSendRequest) {
         if(Objects.isNull(batchSendRequest)){
             return new SendResponse(RespStatusEnum.CLIENT_BAD_PARAMETERS.getCode(), RespStatusEnum.CLIENT_BAD_PARAMETERS.getMsg());
@@ -65,6 +68,6 @@ public class SendServiceImpl implements SendService {
 
         ProcessContext process = processController.process(context);
 
-        return new SendResponse(context.getResponse().getStatus(), context.getResponse().getMsg());
+        return new SendResponse(process.getResponse().getStatus(), process.getResponse().getMsg());
     }
 }

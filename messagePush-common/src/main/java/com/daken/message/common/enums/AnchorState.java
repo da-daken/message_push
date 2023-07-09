@@ -16,9 +16,9 @@ public enum AnchorState implements PowerfulEnum {
     /**
      * 消息接收成功（获取到请求）
      */
-    RECEIVE(10, "消息接收成功"),
+    RECEIVE(10, "消息接收成功,开始处理请求"),
     /**
-     * 消息被丢弃（从Kafka消费后，被丢弃）
+     * 消息被丢弃（从消息队列中消费后，被丢弃）
      */
     DISCARD(20, "消费被丢弃"),
     /**
