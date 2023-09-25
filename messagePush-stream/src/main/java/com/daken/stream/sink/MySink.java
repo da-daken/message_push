@@ -63,7 +63,7 @@ public class MySink implements SinkFunction<AnchorInfo> {
     }
 
     /**
-     * todo 离线数据写入hive
+     * 离线数据写入hive
      * @param anchorInfo
      */
     private void realTimeData(AnchorInfo anchorInfo) {

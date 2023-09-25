@@ -17,6 +17,7 @@
         <module>messagePush-cron</module>
         <module>messagePush-support</module>
         <module>messagePush-stream</module>
+        <module>messagePush-data-house</module>
     </modules>
 
     <parent>

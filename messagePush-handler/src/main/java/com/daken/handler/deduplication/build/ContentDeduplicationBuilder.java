@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.daken.handler.deduplication.DeduplicationParam;
 import com.daken.message.common.enums.AnchorState;
 import com.daken.message.common.enums.DeduplicationType;
+import com.daken.message.support.utils.LogUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;

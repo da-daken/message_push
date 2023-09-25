@@ -3,8 +3,10 @@ package com.daken.handler.deduplication.service;
 import cn.hutool.core.collection.CollUtil;
 import com.daken.handler.deduplication.DeduplicationHolder;
 import com.daken.handler.deduplication.DeduplicationParam;
+import com.daken.message.common.domain.AnchorInfo;
 import com.daken.message.common.domain.TaskInfo;
 import com.daken.message.common.enums.DeduplicationType;
+import com.daken.message.support.utils.LogUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,6 +21,8 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
     protected Integer deduplicationType;
     @Autowired
     private DeduplicationHolder holder;
+    @Autowired
+    private LogUtils logUtils;
 
     @PostConstruct
     public void init(){
@@ -51,6 +55,7 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
         if(CollUtil.isNotEmpty(filterReceiver)){
             taskInfo.getReceiver().removeAll(filterReceiver);
             log.info("去重类型：{} 需要去重的用户:{}", param.getAnchorState(), filterReceiver);
+            logUtils.print(AnchorInfo.builder().businessId(taskInfo.getBusinessId()).ids(filterReceiver).state(param.getAnchorState().getCode()).build());
         }
     }
 }

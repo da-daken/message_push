@@ -19,6 +19,7 @@ public class RocketMqSendMqServiceImpl implements SendMqService {
 
     @Override
     public void send(String topic, String jsonValue, String tagId) {
+        // rocketMQTemplate 使用冒号将topic和tag分割
         if(StringUtils.isNotBlank(tagId)){
             topic = topic + ":" + tagId;
         }

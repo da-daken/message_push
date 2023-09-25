@@ -13,6 +13,7 @@
         <module name="messagePush-service-api-impl" />
         <module name="messagePush-handler" />
         <module name="messagePush-cron" />
+        <module name="messagePush-data-house" />
         <module name="messagePush-common" />
       </profile>
     </annotationProcessing>
@@ -21,6 +22,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="messagePush-common" options="-parameters" />
       <module name="messagePush-cron" options="-parameters" />
+      <module name="messagePush-data-house" options="-parameters" />
       <module name="messagePush-handler" options="-parameters" />
       <module name="messagePush-service-api" options="-parameters" />
       <module name="messagePush-service-api-impl" options="-parameters" />
